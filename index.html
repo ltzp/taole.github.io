@@ -182,10 +182,12 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>#两个有序链表合并的思路有两种1.利用递归的思路 2.创建一个空的链表,并且用一个指针指向这个空链表</p>
-<p>#2.空链表 + 指针<br>    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {<br>        ListNode temp_head(0);<br>        ListNode *pre = &temp_head;<br>        while (l1 &amp;&amp; l2)<br>        {<br>            if(l1-&gt;val &lt; l2-&gt;val){<br>                pre-&gt;next = l1;<br>                l1 = l1-&gt;next;<br>            }else<br>            {<br>                pre-&gt;next = l2;<br>                l2 = l2-&gt;next;<br>            }<br>            pre = pre-&gt;next;<br>        }<br>        if (l1){<br>            pre-&gt;next = l1;<br>        }<br>        if (l2){<br>            pre-&gt;next = l2;<br>        }<br>        return temp_head.next;<br>    }</p>
+        <p>两个有序链表合并的思路有两种1.利用递归的思路 2.创建一个空的链表,并且用一个指针指向这个空链表</p>
 <!--more!-->
-<p>#1.递归<br>    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {<br>        if (l1 == NULL){<br>            return l2;<br>        }<br>        else if (l2 == NULL){<br>            return l1;<br>        } else {<br>            if(l1-&gt;val &lt;= l2-&gt;val){<br>                l1-&gt;next = mergeTwoLists(l1-&gt;next, l2);<br>                return l1;<br>            }else{<br>                l2-&gt;next = mergeTwoLists(l1, l2-&gt;next);<br>                return l2;<br>            }<br>        }<br>    }</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">1.递归</span><br><span class="line">    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) &#123;</span><br><span class="line">        if (l1 == NULL)&#123;</span><br><span class="line">            return l2;</span><br><span class="line">        &#125;</span><br><span class="line">        else if (l2 == NULL)&#123;</span><br><span class="line">            return l1;</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            if(l1-&gt;val &lt;= l2-&gt;val)&#123;</span><br><span class="line">                l1-&gt;next = mergeTwoLists(l1-&gt;next, l2);</span><br><span class="line">                return l1;</span><br><span class="line">            &#125;else&#123;</span><br><span class="line">                l2-&gt;next = mergeTwoLists(l1, l2-&gt;next);</span><br><span class="line">                return l2;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">#2.空链表 + 指针</span><br><span class="line">    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) &#123;</span><br><span class="line">        ListNode temp_head(0);</span><br><span class="line">        ListNode *pre = &amp;temp_head;</span><br><span class="line">        while (l1 &amp;&amp; l2)</span><br><span class="line">        &#123;</span><br><span class="line">            if(l1-&gt;val &lt; l2-&gt;val)&#123;</span><br><span class="line">                pre-&gt;next = l1;</span><br><span class="line">                l1 = l1-&gt;next;</span><br><span class="line">            &#125;else</span><br><span class="line">            &#123;</span><br><span class="line">                pre-&gt;next = l2;</span><br><span class="line">                l2 = l2-&gt;next;</span><br><span class="line">            &#125;</span><br><span class="line">            pre = pre-&gt;next;</span><br><span class="line">        &#125;</span><br><span class="line">        if (l1)&#123;</span><br><span class="line">            pre-&gt;next = l1;</span><br><span class="line">        &#125;</span><br><span class="line">        if (l2)&#123;</span><br><span class="line">            pre-&gt;next = l2;</span><br><span class="line">        &#125;</span><br><span class="line">        return temp_head.next;        </span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
 
       
 
@@ -416,6 +418,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">LeetCode</a>
               </li>
              
@@ -425,10 +431,6 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">分治算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
               </li>
             
             <div class="clearfix"></div>
