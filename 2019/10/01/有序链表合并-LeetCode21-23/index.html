@@ -6,20 +6,20 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>我和我的祖国 | Nico&#39;s blog</title>
+  <title>有序链表合并-LeetCode21-23 | Nico&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="今年是2019年10月1号，是中国人民共和国成立的70周年，为国家的发展和壮大感到十分高兴，昨天观看了我和我的祖国这部电影，使我感慨颇深，祖国从成立到国家的富强是很多英雄为之奋斗，因为他们的付出，所以才有我们现在的生活，才能让我在一个安全的国度进行学习和生活。">
-<meta name="keywords" content="生活">
+  <meta name="description" content="#两个有序链表合并的思路有两种1.利用递归的思路 2.创建一个空的链表,并且用一个指针指向这个空链表 #1.递归    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {        if (l1 == NULL){            return l2;        }        else if (l2 == NULL){">
+<meta name="keywords" content="-&quot;LeetCode&quot; -&quot;链表&quot; -&quot;分治算法&quot;">
 <meta property="og:type" content="article">
-<meta property="og:title" content="我和我的祖国">
-<meta property="og:url" content="http://yoursite.com/2019/10/01/我和我的祖国/index.html">
+<meta property="og:title" content="有序链表合并-LeetCode21-23">
+<meta property="og:url" content="http://yoursite.com/2019/10/01/有序链表合并-LeetCode21-23/index.html">
 <meta property="og:site_name" content="Nico&#39;s blog">
-<meta property="og:description" content="今年是2019年10月1号，是中国人民共和国成立的70周年，为国家的发展和壮大感到十分高兴，昨天观看了我和我的祖国这部电影，使我感慨颇深，祖国从成立到国家的富强是很多英雄为之奋斗，因为他们的付出，所以才有我们现在的生活，才能让我在一个安全的国度进行学习和生活。">
+<meta property="og:description" content="#两个有序链表合并的思路有两种1.利用递归的思路 2.创建一个空的链表,并且用一个指针指向这个空链表 #1.递归    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {        if (l1 == NULL){            return l2;        }        else if (l2 == NULL){">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-10-01T08:01:12.894Z">
+<meta property="og:updated_time" content="2019-10-01T10:44:49.520Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我和我的祖国">
-<meta name="twitter:description" content="今年是2019年10月1号，是中国人民共和国成立的70周年，为国家的发展和壮大感到十分高兴，昨天观看了我和我的祖国这部电影，使我感慨颇深，祖国从成立到国家的富强是很多英雄为之奋斗，因为他们的付出，所以才有我们现在的生活，才能让我在一个安全的国度进行学习和生活。">
+<meta name="twitter:title" content="有序链表合并-LeetCode21-23">
+<meta name="twitter:description" content="#两个有序链表合并的思路有两种1.利用递归的思路 2.创建一个空的链表,并且用一个指针指向这个空链表 #1.递归    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {        if (l1 == NULL){            return l2;        }        else if (l2 == NULL){">
   
     <link rel="alternative" href="/atom.xml" title="Nico&#39;s blog" type="application/atom+xml">
   
@@ -165,27 +165,30 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-我和我的祖国" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-有序链表合并-LeetCode21-23" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      我和我的祖国
+      有序链表合并-LeetCode21-23
     </h1>
   
 
         
-        <a href="/2019/10/01/我和我的祖国/" class="archive-article-date">
-  	<time datetime="2019-10-01T07:55:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-01</time>
+        <a href="/2019/10/01/有序链表合并-LeetCode21-23/" class="archive-article-date">
+  	<time datetime="2019-10-01T10:33:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-01</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <pre><code>今年是2019年10月1号，是中国人民共和国成立的70周年，为国家的发展和壮大感到十分高兴，昨天观看了我和我的祖国这部电影，使我感慨颇深，祖国从成立到国家的富强是很多英雄为之奋斗，因为他们的付出，所以才有我们现在的生活，才能让我在一个安全的国度进行学习和生活。</code></pre>
+        <p>#两个有序链表合并的思路有两种1.利用递归的思路 2.创建一个空的链表,并且用一个指针指向这个空链表</p>
+<p>#1.递归<br>    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {<br>        if (l1 == NULL){<br>            return l2;<br>        }<br>        else if (l2 == NULL){<br>            return l1;<br>        } else {<br>            if(l1-&gt;val &lt;= l2-&gt;val){<br>                l1-&gt;next = mergeTwoLists(l1-&gt;next, l2);<br>                return l1;<br>            }else{<br>                l2-&gt;next = mergeTwoLists(l1, l2-&gt;next);<br>                return l2;<br>            }<br>        }<br>    }</p>
+<p>#2.空链表 + 指针<br>    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {<br>        ListNode temp_head(0);<br>        ListNode *pre = &temp_head;<br>        while (l1 &amp;&amp; l2)<br>        {<br>            if(l1-&gt;val &lt; l2-&gt;val){<br>                pre-&gt;next = l1;<br>                l1 = l1-&gt;next;<br>            }else<br>            {<br>                pre-&gt;next = l2;<br>                l2 = l2-&gt;next;<br>            }<br>            pre = pre-&gt;next;<br>        }<br>        if (l1){<br>            pre-&gt;next = l1;<br>        }<br>        if (l2){<br>            pre-&gt;next = l2;<br>        }<br>        return temp_head.next;<br>    }</p>
+
       
 
       
@@ -224,7 +227,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">生活</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">-"LeetCode" -"链表" -"分治算法"</a>
         		</li>
       		
 		</ul>
@@ -280,7 +283,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150*150&data=http://yoursite.com/2019/10/01/我和我的祖国/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150*150&data=http://yoursite.com/2019/10/01/有序链表合并-LeetCode21-23/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -294,15 +297,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2019/10/01/有序链表合并-LeetCode21-23/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          有序链表合并-LeetCode21-23
-        
-      </div>
-    </a>
   
+    <a href="/2019/10/01/我和我的祖国/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">我和我的祖国</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 

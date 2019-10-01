@@ -162,6 +162,82 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-有序链表合并-LeetCode21-23" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/01/有序链表合并-LeetCode21-23/">有序链表合并-LeetCode21-23</a>
+    </h1>
+  
+
+        
+        <a href="/2019/10/01/有序链表合并-LeetCode21-23/" class="archive-article-date">
+  	<time datetime="2019-10-01T10:33:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>#两个有序链表合并的思路有两种1.利用递归的思路 2.创建一个空的链表,并且用一个指针指向这个空链表</p>
+<p>#1.递归<br>    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {<br>        if (l1 == NULL){<br>            return l2;<br>        }<br>        else if (l2 == NULL){<br>            return l1;<br>        } else {<br>            if(l1-&gt;val &lt;= l2-&gt;val){<br>                l1-&gt;next = mergeTwoLists(l1-&gt;next, l2);<br>                return l1;<br>            }else{<br>                l2-&gt;next = mergeTwoLists(l1, l2-&gt;next);<br>                return l2;<br>            }<br>        }<br>    }</p>
+<p>#2.空链表 + 指针<br>    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {<br>        ListNode temp_head(0);<br>        ListNode *pre = &temp_head;<br>        while (l1 &amp;&amp; l2)<br>        {<br>            if(l1-&gt;val &lt; l2-&gt;val){<br>                pre-&gt;next = l1;<br>                l1 = l1-&gt;next;<br>            }else<br>            {<br>                pre-&gt;next = l2;<br>                l2 = l2-&gt;next;<br>            }<br>            pre = pre-&gt;next;<br>        }<br>        if (l1){<br>            pre-&gt;next = l1;<br>        }<br>        if (l2){<br>            pre-&gt;next = l2;<br>        }<br>        return temp_head.next;<br>    }</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">-"LeetCode" -"链表" -"分治算法"</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/10/01/有序链表合并-LeetCode21-23/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-我和我的祖国" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -332,6 +408,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">-"LeetCode" -"链表" -"分治算法"</a>
               </li>
             
             <div class="clearfix"></div>
