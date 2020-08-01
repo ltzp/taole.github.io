@@ -162,6 +162,102 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-摩尔投票算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/08/01/摩尔投票算法/">摩尔投票算法</a>
+    </h1>
+  
+
+        
+        <a href="/2020/08/01/摩尔投票算法/" class="archive-article-date">
+  	<time datetime="2020-08-01T10:56:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-01</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="用于求数组中的众数"><a href="#用于求数组中的众数" class="headerlink" title="用于求数组中的众数"></a>用于求数组中的众数</h1><p>例如：求数组中大于1/2, 1/3, 1/4 ….的数<br><br>要求：时间复杂度O(n),空间复杂度O(1)<br><br>思路：只有3满足以上要求</p>
+<ul>
+<li>第一种:在求大于1/2的情况下，进行排序，取下标为length/2的数即为大于1/2的数</li>
+<li>第二种:用HashMap进行统计每个数的个数，循环HashMap在与length/n 进行比较</li>
+<li>第三种:例如求1/3的时候，a &gt; 1/3, b &gt; 1/3, c &lt; 1/3。所以会有大于1/3 的数有0，1，2 的情况。cant1, cant2 来记录a, b。 count1,count2来记录a,b的数量。第一次循环记录a,b 的值，再另count1，count2为0。再进行第二次循环判断是否满足大于1/3的条件进行加入数组。</li>
+</ul>
+<hr>
+<h2 id="LeetCode169"><a href="#LeetCode169" class="headerlink" title="LeetCode169"></a>LeetCode169</h2><p><a href="https://leetcode-cn.com/problems/majority-element/" target="_blank" rel="noopener">link</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def majorityElement(self, nums):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: int</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        count = 1</span><br><span class="line">        cur_num = nums[0]</span><br><span class="line">        for num in nums:</span><br><span class="line">            if count == 0:</span><br><span class="line">                cur_num = num</span><br><span class="line">            if num == cur_num:</span><br><span class="line">                count += 1</span><br><span class="line">            else:</span><br><span class="line">                count -= 1</span><br><span class="line">        return cur_num</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="LeetCode229"><a href="#LeetCode229" class="headerlink" title="LeetCode229"></a>LeetCode229</h2><p><a href="https://leetcode-cn.com/problems/majority-element-ii/" target="_blank" rel="noopener">link</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">class Solution(object):</span><br><span class="line">    def majorityElement(self, nums):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        :type nums: List[int]</span><br><span class="line">        :rtype: List[int]</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        res = []</span><br><span class="line">        if not len(nums):</span><br><span class="line">            return res</span><br><span class="line">        cant1, cant2 = nums[0], nums[0]</span><br><span class="line">        count1, count2 = 0, 0</span><br><span class="line">        for num in nums:</span><br><span class="line">            if cant1 == num:</span><br><span class="line">                count1 += 1</span><br><span class="line">                continue</span><br><span class="line">            if cant2 == num:</span><br><span class="line">                count2 += 1</span><br><span class="line">                continue</span><br><span class="line">            if not count1:</span><br><span class="line">                cant1 = num</span><br><span class="line">                count1 = 1</span><br><span class="line">                continue</span><br><span class="line">            if not count2:</span><br><span class="line">                cant2 = num</span><br><span class="line">                count2 = 1</span><br><span class="line">                continue</span><br><span class="line">            count1 -= 1</span><br><span class="line">            count2 -= 1</span><br><span class="line">        count1, count2 = 0, 0</span><br><span class="line">        for i in nums:</span><br><span class="line">            if i == cant1:</span><br><span class="line">                count1 += 1</span><br><span class="line">            elif i == cant2:</span><br><span class="line">                count2 += 1</span><br><span class="line">        if count1 &gt; len(nums)/3:</span><br><span class="line">            res.append(cant1)</span><br><span class="line">        if count2 &gt; len(nums)/3:</span><br><span class="line">            res.append(cant2)</span><br><span class="line">        return res</span><br></pre></td></tr></table></figure>
+
+<p>总结：求1/n 就需要记录n-1个数量多的数, n-1个数量计数器</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">数组</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">众数</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2020/08/01/摩尔投票算法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-链表整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -410,6 +506,84 @@
 
 
   
+    <article id="post-栈的基础知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2019/10/04/栈的基础知识/">栈的基础知识</a>
+    </h1>
+  
+
+        
+        <a href="/2019/10/04/栈的基础知识/" class="archive-article-date">
+  	<time datetime="2019-10-04T07:00:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>栈:<br>&emsp;&emsp;特点:先进后出<br>&emsp;&emsp;引用:#include stack<br>&emsp;&emsp;使用:stack int s;<br>&emsp;&emsp;基础方法:<br>&emsp;&emsp;&emsp;&emsp;pop(); //从栈顶弹出<br>&emsp;&emsp;&emsp;&emsp;top(); //返回栈顶元素<br>&emsp;&emsp;&emsp;&emsp;push(); //入栈<br>&emsp;&emsp;&emsp;&emsp;empty(); //判断栈是否为空<br>&emsp;&emsp;&emsp;&emsp;size(); //返回栈的大小</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2019/10/04/栈的基础知识/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-下一个更大的元素I-LeetCode496" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -461,84 +635,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2019/10/04/下一个更大的元素I-LeetCode496/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-栈的基础知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/04/栈的基础知识/">栈的基础知识</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/04/栈的基础知识/" class="archive-article-date">
-  	<time datetime="2019-10-04T07:00:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>栈:<br>&emsp;&emsp;特点:先进后出<br>&emsp;&emsp;引用:#include stack<br>&emsp;&emsp;使用:stack int s;<br>&emsp;&emsp;基础方法:<br>&emsp;&emsp;&emsp;&emsp;pop(); //从栈顶弹出<br>&emsp;&emsp;&emsp;&emsp;top(); //返回栈顶元素<br>&emsp;&emsp;&emsp;&emsp;push(); //入栈<br>&emsp;&emsp;&emsp;&emsp;empty(); //判断栈是否为空<br>&emsp;&emsp;&emsp;&emsp;size(); //返回栈的大小</p>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">栈</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/04/栈的基础知识/">展开全文 >></a>
         </p>
       
 
@@ -892,90 +988,6 @@
 
 
   
-    <article id="post-有序链表合并-LeetCode21-23" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/10/01/有序链表合并-LeetCode21-23/">有序链表合并-LeetCode21-23</a>
-    </h1>
-  
-
-        
-        <a href="/2019/10/01/有序链表合并-LeetCode21-23/" class="archive-article-date">
-  	<time datetime="2019-10-01T10:33:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2019-10-01</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>两个有序链表合并的思路有两种1.利用递归的思路 2.创建一个空的链表,并且用一个指针指向这个空链表。<br>多个链表合并利用分治算法的思想:将原问题划分成n个规模较小，并且结构与原问题相似的子问题，递归地解决这些子问题，然后再合并其结果，就得到原问题的解。<br>利用分治算法的前提条件:<br>1.原问题与分解成的小问题具有相同的模式；<br>2.原问题分解成的子问题可以独立求解，子问题之间没有相关性，这一点是分治算法跟动态规划的明显区别；<br>3.具有分解终止条件，也就是说，当问题足够小时，可以直接求解；<br>4.可以将子问题合并成原问题，而这个合并操作的复杂度不能太高，否则就起不到减小算法总体复杂度的效果了。</p>
-        
-          <a class="article-more-a" href="/2019/10/01/有序链表合并-LeetCode21-23/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">LeetCode</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">链表</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">分治算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2019/10/01/有序链表合并-LeetCode21-23/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -1088,7 +1100,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">生活</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">栈</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">分治算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1100,15 +1120,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">生活</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">分治算法</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">拆分字符串</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">数组</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">众数</a>
               </li>
             
             <div class="clearfix"></div>
